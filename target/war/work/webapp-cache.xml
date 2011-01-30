@@ -23,6 +23,8 @@
           <string>WEB-INF/classes/foo/service/NotatkaManager.class</string>
           <string>WEB-INF/classes/foo/web/NotatkaBean.class</string>
           <string>WEB-INF/classes/import.sql</string>
+          <string>WEB-INF/classes/message_en.properties</string>
+          <string>WEB-INF/classes/message_pl.properties</string>
           <string>WEB-INF/classes/META-INF/persistence.xml</string>
           <string>WEB-INF/lib/el-impl-2.1.2-b04.jar</string>
         </pathsSet>

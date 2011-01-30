@@ -37,6 +37,7 @@ public class NotatkaBean implements Serializable {
 		return dzis;
 	}
 	
+	@NotNull(message="podaj datê.")
 	public Date getData() {
 		return data;
 	}

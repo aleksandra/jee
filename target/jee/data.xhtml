@@ -5,7 +5,6 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-     
      <div id="prawo">
      	<div id="sidebar">
         	<h:form id="bv">
@@ -16,9 +15,7 @@
                   				<h:outputLabel for="data" value="Data:"/>
                				</th>
                				<td>
-                  				<h:inputText id="data" value="#{notatkaBean.data}" >
-            						<f:convertDateTime type="date" pattern="yyyy-MM-dd"/>
-            					</h:inputText>	
+                  				<h:inputText id="data" value="#{notatkaBean.data}"/>
                 				<h:message for="data" errorClass="invalid"/>
                				</td>
             			</tr>
@@ -62,26 +59,25 @@
       			</h:form>
       			<h:outputText value="Dodaj notatki, żeby móc sobie pousuwac" rendered="#{empty notatkaBean.wszystkieId}" />
       		</div>
-      		<!-- h:outputLink value="data.jsf">Zobacz notatki dla konkretnej daty >></h:outputLink-->
+      		<h:outputLink value="terminarz.jsf">Zobacz wszystkie  </h:outputLink>
       </div>
       
-      <h2>Notatki (masz <h:outputText value="#{notatkaBean.suma}" />)</h2>
-      <h:dataTable var="notatka" value="#{notatkaBean.wszystkieNotatki}" rendered="#{!empty notatkaBean.wszystkieNotatki}">
-         <h:column>
-            
-            <h:graphicImage value="/resources/gfx/wykrzyknik.jpg" alt="wykrzyknik" rendered="#{notatkaBean.dzis.before(notatka.data)}"/>
-
-         </h:column>
+      <h2>Notatki z dnia 
+      		<h:form id="wybierz" rendered="#{!empty notatkaBean.wszystkieId}">
+               <h:selectOneMenu id="id" required="true" value="#{notatkaBean.data}">
+					<f:selectItems value="#{notatkaBean.wszystkieDaty}"  />
+ 				</h:selectOneMenu>	
+           		<h:commandButton id="wybierz" action="#{notatkaBean.ustawDate}" value="Wybierz" />
+      		</h:form>
+      </h2>
+      <h:dataTable var="notatka" value="#{notatkaBean.notatkiWgDaty}" >
          <h:column>
             <f:facet name="header">Id</f:facet>
-             #{notatka.id}
+            #{notatka.id}
          </h:column>
          <h:column>
             <f:facet name="header">Data</f:facet>
-            
-            <h:outputText value="#{notatka.data}" >
-            <f:convertDateTime type="date" />
-            </h:outputText>
+            <h:outputText value="#{notatka.data}" />
          </h:column>
          <h:column>
             <f:facet name="header">Notatka</f:facet>
