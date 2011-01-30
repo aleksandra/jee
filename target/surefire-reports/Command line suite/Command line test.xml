@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Command line test" failures="1" tests="1" time="0.03" errors="0">
+  <properties/>
+  <testcase name="testGetText" time="0.0050" classname="foo.HelloWorldTest">
+    <failure type="java.lang.Error" message="Unresolved compilation problems: 
+	HelloWorld cannot be resolved to a type
+	HelloWorld cannot be resolved to a type
+">
+      <![CDATA[java.lang.Error: Unresolved compilation problems: 
+	HelloWorld cannot be resolved to a type
+	HelloWorld cannot be resolved to a type
+
+	at foo.HelloWorldTest.testGetText(HelloWorldTest.java:9)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:62)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:141)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+... Removed 24 stack frames]]>
+    </failure>
+  </testcase>
+</testsuite>
