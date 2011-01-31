@@ -4,16 +4,19 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
-          <string>data.xhtml</string>
+          <string>archiwum.xhtml</string>
           <string>home.xhtml</string>
           <string>index.jsp</string>
           <string>META-INF/context.xml</string>
-          <string>resources/css/calendar.css</string>
+          <string>prawo.xhtml</string>
           <string>resources/css/screen.css</string>
           <string>resources/gfx/banner.png</string>
+          <string>resources/gfx/calendar.gif</string>
           <string>resources/gfx/weld.png</string>
           <string>resources/gfx/wykrzyknik.jpg</string>
-          <string>resources/scripts/calendar_us.js</string>
+          <string>resources/scripts/jquery.ui.core.js</string>
+          <string>resources/scripts/jquery.ui.datepicker.js</string>
+          <string>resources/scripts/s.js</string>
           <string>terminarz.xhtml</string>
           <string>WEB-INF/beans.xml</string>
           <string>WEB-INF/faces-config.xml</string>

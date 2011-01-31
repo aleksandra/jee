@@ -9,7 +9,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -63,6 +62,14 @@ public class NotatkaBean implements Serializable {
 		return notatkaManager.pobierzWszystkieNotatki();
 	}
 	
+	public List<Notatka> getWszystkieNotatkiPrzyszle() {
+		return notatkaManager.pobierzWszystkieNotatkiPrzyszle();
+	}
+	
+	public List<Notatka> getWszystkieNotatkiPrzeszle() {
+		return notatkaManager.pobierzWszystkieNotatkiPrzeszle();
+	}
+	
 	public List<Long> getWszystkieId() {
 		return notatkaManager.pobierzWszystkieId();
 	}
@@ -84,12 +91,18 @@ public class NotatkaBean implements Serializable {
 	
 	public String wykonajUsuwanie(){
 		notatkaManager.usunNotatke(id);
+		
 		return null;
 	}
 	
 	public String getSuma(){
 		return notatkaManager.suma();
-		
+	}
+	public String getSumaArch(){
+		return notatkaManager.sumaArch();
+	}
+	public String getSumaTerm(){
+		return notatkaManager.sumaTerm();
 	}
 	
 	

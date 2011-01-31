@@ -34,7 +34,7 @@
            			</table>
          			<p>
             			<h:commandButton id="check" action="#{notatkaBean.wykonajDodawanie}" value="Notuj"/>
-            			</p>
+            		</p>
       		</h:form> 
             </div>
      
@@ -55,7 +55,7 @@
            			</table>
          			<p>
            				<h:commandButton id="usun" action="#{notatkaBean.wykonajUsuwanie}" value="Usuń" />
-            				</p>
+            		</p>
       			</h:form>
       			<h:outputText value="Dodaj notatki, żeby móc sobie pousuwac" rendered="#{empty notatkaBean.wszystkieId}" />
       		</div>
@@ -87,8 +87,8 @@
                					Razem:
                				</th>
                				<td>
-                  				<h:outputText  value="#{notatkaBean.suma}" />   <h:outputText value="Zaktualizowano" rendered="#{facesContext.postback and empty facesContex.messageList}" style="color: green;"/>
-         		
+                  				<h:outputText  value="#{notatkaBean.suma}  " />   
+                  				<h:outputText value="Zaktualizowano." rendered="#{facesContext.postback and empty facesContext.messageList}" style="color: green;"/>
                				</td>
            				 </tr>
            			</table>
@@ -96,14 +96,9 @@
       </div>
       
       <div id="lewo">
-      
-      <h2>Notatki </h2>
-      <h:dataTable var="notatka" value="#{notatkaBean.wszystkieNotatkiPrzyszle}" rendered="#{!empty notatkaBean.wszystkieNotatkiPrzyszle}" columnClasses="kolumna1, kolumna2, kolumna3, kolumna4">
-         <h:column>
-            
-            <h:graphicImage value="/resources/gfx/wykrzyknik.jpg" alt="wykrzyknik" rendered="#{notatkaBean.dzis.after(notatka.data)}"/>
-
-         </h:column>
+     
+      <h2>Archiwum </h2>
+      <h:dataTable var="notatka" value="#{notatkaBean.wszystkieNotatkiPrzeszle}" rendered="#{!empty notatkaBean.wszystkieNotatkiPrzeszle}" columnClasses="kolumna2, kolumna3, kolumna4" >
          <h:column>
             <f:facet name="header">Id</f:facet>
              #{notatka.id}
@@ -121,7 +116,8 @@
          </h:column>
       </h:dataTable>
       <br/>
-      <h:outputLink value="archiwum.jsf"> &lt;&lt;Zobacz starsze notatki.</h:outputLink>
+       <h:outputLink value="terminarz.jsf"> Wróc &gt;&gt; </h:outputLink>
       </div>
+      
    </ui:define>
 </ui:composition>

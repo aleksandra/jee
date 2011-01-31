@@ -4,9 +4,9 @@
    xmlns:f="http://java.sun.com/jsf/core"
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
-   <ui:define name="content">
-     
-     <div id="prawo">
+   <ui:define name="prawo">
+   
+   	<div id="prawo">
      	<div id="sidebar">
         	<h:form id="bv">
          		<h2>Dodaj notatkę:</h2>
@@ -94,34 +94,7 @@
            			</table>
       			</div>		
       </div>
-      
-      <div id="lewo">
-      
-      <h2>Notatki </h2>
-      <h:dataTable var="notatka" value="#{notatkaBean.wszystkieNotatkiPrzyszle}" rendered="#{!empty notatkaBean.wszystkieNotatkiPrzyszle}" columnClasses="kolumna1, kolumna2, kolumna3, kolumna4">
-         <h:column>
-            
-            <h:graphicImage value="/resources/gfx/wykrzyknik.jpg" alt="wykrzyknik" rendered="#{notatkaBean.dzis.after(notatka.data)}"/>
-
-         </h:column>
-         <h:column>
-            <f:facet name="header">Id</f:facet>
-             #{notatka.id}
-         </h:column>
-         <h:column>
-            <f:facet name="header">Data</f:facet>
-            
-            <h:outputText value="#{notatka.data}" >
-            <f:convertDateTime type="date" />
-            </h:outputText>
-         </h:column>
-         <h:column>
-            <f:facet name="header">Notatka</f:facet>
-            #{notatka.tresc}
-         </h:column>
-      </h:dataTable>
-      <br/>
-      <h:outputLink value="archiwum.jsf"> &lt;&lt;Zobacz starsze notatki.</h:outputLink>
-      </div>
+   
    </ui:define>
-</ui:composition>
+   </ui:composition>
+   

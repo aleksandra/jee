@@ -30,6 +30,14 @@ public class NotatkaManager {
 		return em.createQuery("SELECT n FROM Notatka n ORDER BY n.data").getResultList();
 	}
 	
+	public List<Notatka> pobierzWszystkieNotatkiPrzeszle() {		
+		return em.createQuery("SELECT n FROM Notatka n WHERE n.data < CURRENT_DATE ORDER BY n.data").getResultList();
+	}
+	
+	public List<Notatka> pobierzWszystkieNotatkiPrzyszle() {		
+		return em.createQuery("SELECT n FROM Notatka n WHERE n.data > CURRENT_DATE ORDER BY n.data").getResultList();
+	}
+	
 	public List<Long> pobierzWszystkieId() {		
 		return em.createQuery("SELECT n.id FROM Notatka n ").getResultList();
 	}
@@ -53,6 +61,13 @@ public class NotatkaManager {
 	
 	public String suma() {
 		return em.createQuery("SELECT Count(n) FROM Notatka n").getSingleResult().toString();
+	}
+	
+	public String sumaArch() {
+		return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data < CURRENT_DATE").getSingleResult().toString();
+	}
+	public String sumaTerm() {
+		return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data > CURRENT_DATE").getSingleResult().toString();
 	}
 	
 	

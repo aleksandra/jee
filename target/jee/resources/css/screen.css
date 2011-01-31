@@ -17,6 +17,11 @@ body {
 #prawo {
 	float:right;
 	}
+	
+#lewo {
+	width:540px;
+}
+
 #sidebar {
    font-size: 0.9em;
    width: 260px;
@@ -28,6 +33,16 @@ body {
 }
 
 #sidebar2 {
+   font-size: 0.9em;
+   width: 260px;
+
+   border: 1px solid #666666;
+   background: #b4d3ff;
+   padding: 0 15px 5px 15px;
+   margin:5px;
+}
+
+#sidebar3 {
    font-size: 0.9em;
    width: 260px;
 
@@ -52,4 +67,39 @@ code {
 span.invalid {
    padding-left: 3px;
    color: red;
+}
+
+.kolumna1 {
+	width:15px;
+	margin:5px;	
+}
+
+.kolumna2 {
+	width:20px;
+	margin:5px;	
+}
+
+.kolumna3 {
+	width:100px;
+	margin:5px;	
+	text-align:center;
+}
+
+.kolumna4 {
+	width:250px;
+	margin:5px;	
+}
+
+a {
+	text-decoration:none;
+	color:#666666;
+	text-align:right;
+}
+
+a:hover {
+	color:#b4d3ff;
+}
+
+#ui-datepicker-div {
+	font-size: 62.5%;
 }

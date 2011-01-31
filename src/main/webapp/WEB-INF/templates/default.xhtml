@@ -4,12 +4,15 @@
    xmlns:h="http://java.sun.com/jsf/html"
    xmlns:ui="http://java.sun.com/jsf/facelets">
    <h:head>
-      <title>Java EE 6 Starter Application</title>
+      <title>Terminarz</title>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <h:outputStylesheet name="css/screen.css"/>
-      <h:outputStylesheet name="css/calendar.css"/>
-      <script language="JavaScript" src="calendar_us.js"></script>
-	
+      <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"/>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+      
+      <h:outputScript name="scripts/jquery.ui.datepicker.js" />
+      <h:outputScript name="scripts/jquery.ui.core.js" />
+      <h:outputScript name="scripts/s.js" />
    </h:head>
    
    <h:body>
