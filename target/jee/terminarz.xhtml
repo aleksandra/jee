@@ -5,10 +5,95 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-     <ui:insert name="prawo">
-               [Template content will be inserted here]
-     </ui:insert>
      
+     <div id="prawo">
+     	<div id="sidebar">
+        	<h:form id="bv">
+         		<h2>Dodaj notatkę:</h2>
+         			<table>
+            			<tr>
+               				<th style="text-align: right;">
+                  				<h:outputLabel for="data" value="Data:"/>
+               				</th>
+               				<td>
+                  				<h:inputText id="data" styleClass="data" value="#{notatkaBean.data}" >
+            						<f:convertDateTime type="date" pattern="yyyy-MM-dd" timeZone="UTC+1:00"/>
+            					</h:inputText>	
+                				<h:message for="data" errorClass="invalid"/>
+               				</td>
+            			</tr>
+            			<tr>
+               				<th style="text-align: right;">
+                  				<h:outputLabel for="tresc" value="Notatka:"/>
+               				</th>
+               				<td>
+                  				<h:inputTextarea id="tresc" value="#{notatkaBean.tresc}" />
+                  				<h:message for="tresc" errorClass="invalid"/>
+               				</td>
+           				 </tr>
+           			</table>
+         			<p>
+            			<h:commandButton id="check" action="#{notatkaBean.wykonajDodawanie}" value="Notuj"/>
+            			</p>
+      		</h:form> 
+            </div>
+     
+   			<div id="sidebar2" >
+   				<h2>Usuń notatkę:</h2>
+              	<h:form id="usun" rendered="#{!empty notatkaBean.wszystkieId}">
+      				<table>
+            			<tr>
+               				<th style="text-align: right;">
+                  				<h:outputLabel for="id" value="Id:"/>
+               				</th>
+               				<td>
+                    			<h:selectOneMenu id="id" required="true" value="#{notatkaBean.id}">
+									<f:selectItems value="#{notatkaBean.wszystkieId}"  />
+ 								</h:selectOneMenu>
+               				</td>
+            			</tr>
+           			</table>
+         			<p>
+           				<h:commandButton id="usun" action="#{notatkaBean.wykonajUsuwanie}" value="Usuń" />
+            				</p>
+      			</h:form>
+      			<h:outputText value="Dodaj notatki, żeby móc sobie pousuwac" rendered="#{empty notatkaBean.wszystkieId}" />
+      		</div>
+      		
+      		<div id="sidebar3" >
+   				<h2>Statystyki:</h2>
+              	
+      				<table>
+            			<tr>
+               				<th style="text-align: right;">
+                  				W archiwum:
+               				</th>
+               				<td>
+                  				<h:outputText  value="#{notatkaBean.sumaArch(1)}" />	
+               				</td>
+            			</tr>
+            			<tr>
+               				<th style="text-align: right;">
+               					Aktualne:
+               				</th>
+               				<td>
+                  				<h:outputText  value="#{notatkaBean.sumaTerm}" />
+               				</td>
+           				 </tr>
+           				 
+           				 <hr width="100%"/>
+           				 <tr>
+               				<th style="text-align: right;">
+               					Razem:
+               				</th>
+               				<td>
+                  				<h:outputText  value="#{notatkaBean.suma}" />   <h:outputText value="Zaktualizowano" rendered="#{facesContext.postback and empty facesContex.messageList}" style="color: green;"/>
+         		
+               				</td>
+           				 </tr>
+           			</table>
+      			</div>		
+      </div>
       
       <div id="lewo">
       

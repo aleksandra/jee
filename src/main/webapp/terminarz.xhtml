@@ -17,7 +17,7 @@
                				</th>
                				<td>
                   				<h:inputText id="data" styleClass="data" value="#{notatkaBean.data}" >
-            						<f:convertDateTime type="date" pattern="yyyy-MM-dd"/>
+            						<f:convertDateTime type="date" pattern="yyyy-MM-dd" timeZone="UTC+1:00"/>
             					</h:inputText>	
                 				<h:message for="data" errorClass="invalid"/>
                				</td>

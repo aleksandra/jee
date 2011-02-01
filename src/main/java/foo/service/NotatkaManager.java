@@ -35,7 +35,7 @@ public class NotatkaManager {
 	}
 	
 	public List<Notatka> pobierzWszystkieNotatkiPrzyszle() {		
-		return em.createQuery("SELECT n FROM Notatka n WHERE n.data > CURRENT_DATE ORDER BY n.data").getResultList();
+		return em.createQuery("SELECT n FROM Notatka n WHERE n.data >= CURRENT_DATE ORDER BY n.data").getResultList();
 	}
 	
 	public List<Long> pobierzWszystkieId() {		
@@ -59,16 +59,24 @@ public class NotatkaManager {
 		em.remove(notatka);
 	}
 	
-	public String suma() {
-		return em.createQuery("SELECT Count(n) FROM Notatka n").getSingleResult().toString();
-	}
+	public String suma(int i) {
+		if (i == 3) {	//suma wszystkie
+			return em.createQuery("SELECT Count(n) FROM Notatka n").getSingleResult().toString();
+		}
+		if (i== 2) {	//suma term
+			return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data >= CURRENT_DATE").getSingleResult().toString();
+		}
+		else  {//(i == 1) suma arch
+			return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data < CURRENT_DATE").getSingleResult().toString();
+		}
+	}	
 	
-	public String sumaArch() {
+	/*public String sumaArch() {
 		return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data < CURRENT_DATE").getSingleResult().toString();
 	}
 	public String sumaTerm() {
-		return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data > CURRENT_DATE").getSingleResult().toString();
-	}
+		return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data >= CURRENT_DATE").getSingleResult().toString();
+	}*/
 	
 	
 	

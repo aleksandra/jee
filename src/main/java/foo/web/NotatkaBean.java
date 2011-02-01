@@ -96,13 +96,13 @@ public class NotatkaBean implements Serializable {
 	}
 	
 	public String getSuma(){
-		return notatkaManager.suma();
+		return notatkaManager.suma(3);
 	}
 	public String getSumaArch(){
-		return notatkaManager.sumaArch();
+		return notatkaManager.suma(1);
 	}
 	public String getSumaTerm(){
-		return notatkaManager.sumaTerm();
+		return notatkaManager.suma(2);
 	}
 	
 	
