@@ -1,1 +1,1 @@
-<% response.sendRedirect("terminarz.jsf"); %>
+<% response.sendRedirect("first.jsf"); %>

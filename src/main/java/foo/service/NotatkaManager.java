@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import foo.domain.Notatka;
-
+import foo.domain.User;
 
 @Stateless
 public class NotatkaManager {
@@ -17,57 +17,58 @@ public class NotatkaManager {
 	@PersistenceContext
 	EntityManager em;
 	
-	public void dodajNotatke(Date data, String tresc){
-		Notatka notatka = new Notatka();
+	//terminarz
+	public void dodajNotatke(Date data, String tresc, String userLogin){
+		User user = new User();
+		user.setLogin(userLogin);
 		
+		Notatka notatka = new Notatka();
 		notatka.setData(data);
 		notatka.setTresc(tresc);
+		
+		List<Notatka> notatki = new ArrayList<Notatka>();
+		notatki.add(notatka);
+		
+		user.setNotatki(notatki);
+		notatka.setUser(user);
 		
 		em.persist(notatka);
 	}
 	
-	public List<Notatka> pobierzWszystkieNotatki() {		
-		return em.createQuery("SELECT n FROM Notatka n ORDER BY n.data").getResultList();
+	public List<Notatka> pobierzWszystkieNotatki() {
+		
+		return em.createQuery("SELECT n FROM Notatka n WHERE ORDER BY n.user, n.data").getResultList();
 	}
 	
-	public List<Notatka> pobierzWszystkieNotatkiPrzeszle() {		
-		return em.createQuery("SELECT n FROM Notatka n WHERE n.data < CURRENT_DATE ORDER BY n.data").getResultList();
+	public List<Notatka> pobierzWszystkieNotatkiPrzeszle(String login) {
+		
+		return em.createQuery("SELECT n FROM Notatka n WHERE n.user = '"+login+"' AND n.data < CURRENT_DATE ORDER BY n.data").getResultList();
 	}
 	
-	public List<Notatka> pobierzWszystkieNotatkiPrzyszle() {		
-		return em.createQuery("SELECT n FROM Notatka n WHERE n.data >= CURRENT_DATE ORDER BY n.data").getResultList();
+	public List<Notatka> pobierzWszystkieNotatkiPrzyszle(String login) {
+		
+		return em.createQuery("SELECT n FROM Notatka n WHERE n.user = '"+login+"' AND n.data >= CURRENT_DATE ORDER BY n.data").getResultList();
 	}
 	
-	public List<Long> pobierzWszystkieId() {		
-		return em.createQuery("SELECT n.id FROM Notatka n ").getResultList();
+	public List<Long> pobierzWszystkieId(String login) {		
+		return em.createQuery("SELECT n.id FROM Notatka n WHERE n.user='"+login+"'").getResultList();
 	}
-	
-	public List<String> pobierzWszystkieDaty() {		
-		return em.createQuery("SELECT n.data FROM Notatka n GROUP BY n.data").getResultList();
-	}
-	
-	public List<Notatka> pobierzNotatki(Date data){		
-		return em.createQuery("SELECT n FROM Notatka n WHERE n.data='" + data + "'").getResultList();		
-	}
-	
-	public List<Notatka> pobierzNotatke(long id) {
-		return em.createQuery("SELECT n FROM Notatka n where n.id='" + id + "'").getResultList();
-	}
-	
+		
 	public void usunNotatke(long id) {
 		Notatka notatka = em.find(Notatka.class, id);
 		em.remove(notatka);
 	}
 	
-	public String suma(int i) {
+	public String suma(String login, int i) {
+		
 		if (i == 3) {	//suma wszystkie
-			return em.createQuery("SELECT Count(n) FROM Notatka n").getSingleResult().toString();
+			return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.user ='"+login+"'").getSingleResult().toString();
 		}
 		if (i== 2) {	//suma term
-			return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data >= CURRENT_DATE").getSingleResult().toString();
+			return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.user ='"+login+"' AND n.data >= CURRENT_DATE").getSingleResult().toString();
 		}
 		else  {//(i == 1) suma arch
-			return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data < CURRENT_DATE").getSingleResult().toString();
+			return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.user ='"+login+"' AND n.data < CURRENT_DATE").getSingleResult().toString();
 		}
 	}	
 	
@@ -78,6 +79,47 @@ public class NotatkaManager {
 		return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data >= CURRENT_DATE").getSingleResult().toString();
 	}*/
 	
+	//rejestracja, logowanie
+	
+	public void dodajUsera(String login, String imie, String haslo){
+		User user = new User();
+		
+		user.setLogin(login);
+		user.setImie(imie);
+		user.setHaslo(haslo);
+		
+		em.persist(user);
+	}
+	
+	public User getUser(String login){
+		return em.find(User.class, login);	
+	}
 	
 	
+	//admin
+	public List<User> pobierzUserow(){
+		List resultList = em.createNamedQuery("user.all").getResultList();
+		return resultList;
+	}
+	
+	public List<Long> pobierzWszystkieId() {		
+		return em.createQuery("SELECT n.id FROM Notatka n ").getResultList();
+	}
+	
+	public List<String> pobierzWszystkieLoginy() {		
+		return em.createQuery("SELECT u.login FROM User u ").getResultList();
+	}
+	
+	public String suma() {
+		return em.createQuery("SELECT Count(n) FROM Notatka n ").getSingleResult().toString();
+	}
+	
+	public String sumaUserow() {
+		return em.createQuery("SELECT Count(u) FROM User u ").getSingleResult().toString();
+	}
+	
+	public void usunUsera(String login) {
+		User user = em.find(User.class, login);
+		em.remove(user);
+	}
 }

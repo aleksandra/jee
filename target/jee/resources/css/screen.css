@@ -14,6 +14,10 @@ body {
    padding-top: 110px;
 }
 
+h2 {
+	font-size:110%;
+}
+
 #prawo {
 	float:right;
 	}
@@ -22,7 +26,7 @@ body {
 	width:540px;
 }
 
-#sidebar {
+.sidebar {
    font-size: 0.9em;
    width: 260px;
    
@@ -32,27 +36,9 @@ body {
    margin:5px;
 }
 
-#sidebar2 {
-   font-size: 0.9em;
-   width: 260px;
 
-   border: 1px solid #666666;
-   background: #b4d3ff;
-   padding: 0 15px 5px 15px;
-   margin:5px;
-}
 
-#sidebar3 {
-   font-size: 0.9em;
-   width: 260px;
-
-   border: 1px solid #666666;
-   background: #b4d3ff;
-   padding: 0 15px 5px 15px;
-   margin:5px;
-}
-
-#sidebar ul {
+.sidebar ul {
    padding-left: 30px;
 }
 #footer {
@@ -92,14 +78,19 @@ span.invalid {
 
 a {
 	text-decoration:none;
-	color:#666666;
+	
+	color:#b4d3ff;
 	text-align:right;
 }
 
 a:hover {
-	color:#b4d3ff;
+	color:#666666;
 }
 
 #ui-datepicker-div {
 	font-size: 62.5%;
+}
+
+hr {
+	width:100%;
 }

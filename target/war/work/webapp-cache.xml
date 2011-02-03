@@ -4,7 +4,8 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
-          <string>archiwum.xhtml</string>
+          <string>admin.xhtml</string>
+          <string>first.xhtml</string>
           <string>home.xhtml</string>
           <string>index.jsp</string>
           <string>META-INF/context.xml</string>
@@ -22,8 +23,14 @@
           <string>WEB-INF/templates/default.xhtml</string>
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/classes/foo/domain/Notatka.class</string>
+          <string>WEB-INF/classes/foo/domain/User.class</string>
           <string>WEB-INF/classes/foo/service/NotatkaManager.class</string>
+          <string>WEB-INF/classes/foo/web/AdminBean.class</string>
+          <string>WEB-INF/classes/foo/web/LogBean.class</string>
+          <string>WEB-INF/classes/foo/web/LogWal.class</string>
           <string>WEB-INF/classes/foo/web/NotatkaBean.class</string>
+          <string>WEB-INF/classes/foo/web/RejBean.class</string>
+          <string>WEB-INF/classes/foo/web/RejWal.class</string>
           <string>WEB-INF/classes/import.sql</string>
           <string>WEB-INF/classes/message_en.properties</string>
           <string>WEB-INF/classes/message_pl.properties</string>

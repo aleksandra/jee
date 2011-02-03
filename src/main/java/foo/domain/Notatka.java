@@ -1,12 +1,13 @@
 package foo.domain;
 
 
-
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 @Entity
@@ -17,6 +18,7 @@ public class Notatka {
 	private long id;
 	private String tresc;
 	
+	private User user;
 
 	@Id
 	@GeneratedValue
@@ -44,4 +46,14 @@ public class Notatka {
 		this.data = data;
 	}
 
+	@ManyToOne
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	
 }
