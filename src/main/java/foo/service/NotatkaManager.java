@@ -59,6 +59,13 @@ public class NotatkaManager {
 		em.remove(notatka);
 	}
 	
+	public void edytujNotatke(long id, Date data, String tresc) {
+		Notatka notatka = em.find(Notatka.class, id);
+		notatka.setTresc(tresc);
+		notatka.setData(data);
+		em.merge(notatka);
+	}
+	
 	public String suma(String login, int i) {
 		
 		if (i == 3) {	//suma wszystkie
@@ -70,7 +77,15 @@ public class NotatkaManager {
 		else  {//(i == 1) suma arch
 			return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.user ='"+login+"' AND n.data < CURRENT_DATE").getSingleResult().toString();
 		}
-	}	
+	}
+	
+	public List<Notatka> szukaj(String login, String fraza, String data) {
+		return em.createQuery("SELECT n FROM Notatka n WHERE n.user ='"+login+"' AND n.tresc LIKE '%"+fraza+"%' AND n.data LIKE '%"+data+"%'").getResultList();
+	}
+	
+	public List<Notatka> pobierzNotatkiWgId(List<Long> wyniki) {
+		return em.createQuery("SELECT n FROM Notatka n WHERE n.id IN("+wyniki+")").getResultList();
+	}
 	
 	/*public String sumaArch() {
 		return em.createQuery("SELECT Count(n) FROM Notatka n WHERE n.data < CURRENT_DATE").getSingleResult().toString();

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:c="http://java.sun.com/jsp/jstl/core"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+   
+		   
+		<div id="rejestracja"  >
+		   	 <h:form id="rejForm">
+		         <h2>Zarejestruj się (lub <h:outputLink value="first.jsf">zaloguj</h:outputLink> jeśli masz już konto)</h2>
+		         <table>
+		            <tr>
+		               <th style="text-align: right;">
+		                  <h:outputLabel for="login" value="Login:"/>
+		               </th>
+		               <td>
+		                  <h:inputText id="login" value="#{rejBean.login}" validator="#{rejWal.validate}">
+		                  <!-- f:validator validatorId="UnikalnyLogin"/--> 
+		                  </h:inputText>
+		                  <h:message for="login" errorClass="invalid"/>
+		               </td>
+		            </tr>
+		            <tr>
+		               <th style="text-align: right;">
+		                  <h:outputLabel for="imie" value="Imię:"/>
+		               </th>
+		               <td>
+		                  <h:inputText id="imie" value="#{rejBean.imie}"/>
+		                  <h:message for="imie" errorClass="invalid"/>
+		               </td>
+		            </tr>
+		            <tr>
+		               <th style="text-align: right;">
+		                  <h:outputLabel for="haslo" value="Hasło:"/>
+		               </th>
+		               <td>
+		                  <h:inputSecret id="haslo" value="#{rejBean.haslo}"/>
+		                  <h:message for="haslo" errorClass="invalid"/>
+		               </td>
+		            </tr>
+		         </table>
+		         <p>
+		            <h:commandButton id="rej" action="#{rejBean.wykonajDodawanie}" value="Rejestruj"/>
+		            <h:outputText value="Udało się, teraz możesz się zalogować" rendered="#{facesContext.postback and empty facesContext.messageList and !empty rejBean.login}" style="color: green;"/>
+		         </p>
+		      </h:form>
+		      
+		   </div>
+		 
+   
+   </ui:define>
+   </ui:composition>

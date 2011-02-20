@@ -51,7 +51,7 @@ public class RejBean{
 	//akcje
 	public String wykonajDodawanie(){
 		notatkaManager.dodajUsera(login, imie.replaceFirst(imie.substring(0,1), imie.substring(0,1).toUpperCase()), haslo);
-		return null;
+		return "first";
 	}
 	
 	public List<User> getWszystkie(){

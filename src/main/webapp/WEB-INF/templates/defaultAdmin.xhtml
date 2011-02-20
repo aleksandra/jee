@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:c="http://java.sun.com/jsp/jstl/core">
+   <h:head>
+      <title>Terminarz</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <h:outputStylesheet name="css/screenAdmin.css"/>
+      <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css"/>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+      
+      <h:outputScript name="scripts/jquery.ui.datepicker.js" />
+      <h:outputScript name="scripts/jquery.ui.core.js" />
+      <h:outputScript name="scripts/s.js" />
+   </h:head>
+   
+   <h:body>
+      <div id="container">
+      	<h1>Panel administracyjny</h1>
+         <div id="content">       
+            <ui:insert name="content">
+               [Template content will be inserted here]
+            </ui:insert>
+         </div>
+         
+         <div id="footer">
+            
+            <br/>
+            <hr />
+            <p>
+               Aleksandra Bucior
+           </p>
+         </div>
+      </div>
+   </h:body>
+</html>

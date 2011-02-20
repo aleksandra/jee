@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:c="http://java.sun.com/jsp/jstl/core"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+     <c:if test="${logBean.login!=null}" >
+     <div id="prawo">
+     
+     
+     <div class="sidebar">
+         <h2>Widok:</h2>
+         	<p>
+            	<h:outputLink  id="widokButton" value="terminarz.jsf">Wróć do wszystkich</h:outputLink>
+            </p>
+    </div>
+    
+    <div class="sidebar">
+        	<h:form id="bv" >
+         		<h2>Notatka:</h2>
+         			<table>
+            			<tr>
+               				<th style="text-align: right;">
+                  				<h:outputLabel for="data" value="Data:"/>
+               				</th>
+               				<td>
+                  				<h:inputText id="data" styleClass="data" value="#{notatkaBean.data}" >
+            						<f:convertDateTime type="date" pattern="yyyy-MM-dd" />
+            					</h:inputText>	
+                				<h:message for="data" errorClass="invalid"/>
+               				</td>
+            			</tr>
+            			<tr>
+               				<th style="text-align: right;">
+                  				<h:outputLabel for="tresc" value="Notatka:"/>
+               				</th>
+               				<td>
+                  				<h:inputTextarea id="tresc" value="#{notatkaBean.tresc}" />
+                  				<h:message for="tresc" errorClass="invalid"/>
+               				</td>
+           				 </tr>
+           			</table>
+         			<p>
+            			<h:commandButton id="add" action="#{notatkaBean.wykonaj(notatkaBean.id)}" value="#{notatkaBean.czyEdycja}" />
+            		</p>
+      		</h:form> 
+            </div>
+     
+  <div class="sidebar">
+        	<h:form id="searchForm" >
+         		<h2>Wyszukiwarka:</h2>
+         			<table>
+            			<tr>
+               				<th style="text-align: right;">
+                  				<h:outputLabel for="fraza" value="Fraza:"/>
+               				</th>
+               				<td>
+                  				<h:inputText id="fraza" value="#{szukanieBean.fraza}" />
+               				</td>
+           				 </tr>
+           				 <tr>
+               				<th style="text-align: right;">
+                  				<h:outputLabel for="data" value="Data:"/>
+               				</th>
+               				<td>
+                 				<h:inputText id="data" styleClass="data" value="#{szukanieBean.data}" />
+               				</td>
+           			 	</tr>
+           			</table>
+         			<p>
+            			<h:commandButton id="search" action="wyniki" value="Szukaj" />
+            		</p>
+      		</h:form> 
+            </div>
+   	</div>
+   		  
+	<div id="lewo">
+        
+    Witaj, <h:outputText value="#{logBean.imie}"  style="font-weight:bold;"/> <h:form><h:commandLink action="#{logBean.wyloguj}" ><h:outputText value="Wyloguj się"/></h:commandLink></h:form>
+    <br/>
+    
+		<h2>Notatki </h2>
+      	<h:dataTable var="notatka" value="#{szukanieBean.wykonajSzukanie}"  rendered="#{!empty szukanieBean.wykonajSzukanie}" columnClasses="kolumna3, kolumna4">
+        	
+         	<h:column>
+            	<f:facet name="header">Data</f:facet>
+	            <h:outputText value="#{notatka.data}" >
+    	    	    <f:convertDateTime type="date" />
+        	    </h:outputText>
+         	</h:column>
+         	<h:column>
+            	<f:facet name="header">Notatka</f:facet>
+            	#{notatka.tresc}
+         	</h:column>
+         	<h:column>
+         		<h:form id="wlaczedit">
+           			<h:commandLink id="wlaczedit" action="#{notatkaBean.wlaczEdycje(notatka.id,notatka.data,notatka.tresc)}" value="Edytuj" />			
+      			</h:form>
+         	</h:column>
+         	<h:column>
+         		<h:form id="usun">
+           			<h:commandLink id="usun" action="#{notatkaBean.wykonajUsuwanie(notatka.id)}" value="Usuń" />			
+      			</h:form>
+         	</h:column>
+         </h:dataTable>
+     
+     	<h:outputText value="Brak wyników wyszukiwania" rendered="#{empty szukanieBean.wykonajSzukanie}" />
+	</div>
+      
+  </c:if>
+      
+  <c:if test="${logBean.login==null}" ><br/>
+      <h:outputLink value="first.jsf">Zaloguj się</h:outputLink>, aby oglądać tą stronę <br/>
+  </c:if>
+ </ui:define>
+</ui:composition>

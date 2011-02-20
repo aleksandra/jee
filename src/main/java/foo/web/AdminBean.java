@@ -24,30 +24,6 @@ public class AdminBean {
 	private long id;
 	private String userLogin;
 	private List<Long> idList;
-	
-	private String widok = "notatki";
-	private List<String> widokList;
-	private String[] widoki = {"notatki","u¿ytkownicy"};
-	
-	public AdminBean() {
-		widokList = new ArrayList<String>();
-		for(String w:widoki){
-			widokList.add(w);
-		}
-		
-	}
-	
-	public List<String> getWidokList() {
-		return widokList;
-	}
-	
-	public String getWidok() {
-		return widok;
-	}
-
-	public void setWidok(String widok) {
-		this.widok = widok;
-	}
 
 	
 	public Date getData() {
@@ -103,9 +79,8 @@ public class AdminBean {
 		return null;
 	}
 	
-	public String wykonajUsuwanieU(){
-		if (!userLogin.equals("admin"))
-			notatkaManager.usunUsera(userLogin);
+	public String wykonajUsuwanieU(String l){
+			notatkaManager.usunUsera(l);
 		return null;
 	}
 	

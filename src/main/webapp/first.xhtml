@@ -11,7 +11,7 @@
    	 <h:form id="logForm">
    	 	<f:event type="postValidate" listener="#{logWal.validateLoginHaslo}" />
    	 	
-         <h2>Zaloguj się (lub jeśli nie masz jeszcze konta, zarejestruj się poniżej)</h2>
+         <h2>Zaloguj się (lub <h:outputLink value="rej.jsf">zarejestruj</h:outputLink>)</h2>
          <table>
             <tr>
                <th style="text-align: right;">
@@ -37,53 +37,11 @@
          <p>
             <h:commandButton id="log" action="#{logBean.loguj}" value="Loguj"/>
          </p>
-      </h:form>
-      <hr />
-<hr/>  
+      </h:form> 
       </div>
    
-   
-<div id="rejestracja"  >
-   	 <h:form id="rejForm">
-         <h2>Zarejestruj się</h2>
-         <table>
-            <tr>
-               <th style="text-align: right;">
-                  <h:outputLabel for="login" value="Login:"/>
-               </th>
-               <td>
-                  <h:inputText id="login" value="#{rejBean.login}" validator="#{rejWal.validate}">
-                  <!-- f:validator validatorId="UnikalnyLogin"/--> 
-                  </h:inputText>
-                  <h:message for="login" errorClass="invalid"/>
-               </td>
-            </tr>
-            <tr>
-               <th style="text-align: right;">
-                  <h:outputLabel for="imie" value="Imię:"/>
-               </th>
-               <td>
-                  <h:inputText id="imie" value="#{rejBean.imie}"/>
-                  <h:message for="imie" errorClass="invalid"/>
-               </td>
-            </tr>
-            <tr>
-               <th style="text-align: right;">
-                  <h:outputLabel for="haslo" value="Hasło:"/>
-               </th>
-               <td>
-                  <h:inputSecret id="haslo" value="#{rejBean.haslo}"/>
-                  <h:message for="haslo" errorClass="invalid"/>
-               </td>
-            </tr>
-         </table>
-         <p>
-            <h:commandButton id="rej" action="#{rejBean.wykonajDodawanie}" value="Rejestruj"/>
-            <h:outputText value="Udało się, teraz możesz się zalogować" rendered="#{facesContext.postback and empty facesContext.messageList and !empty rejBean.login}" style="color: green;"/>
-         </p>
-      </h:form>
-      
-   </div>
+  <h:outputText value="Rejestracja przebiegła pomyślnie, teraz możesz się zalogować" rendered="#{facesContext.postback and empty facesContext.messageList and !empty rejBean.login}" style="color: green;"/>
+        
  
    
    </ui:define>

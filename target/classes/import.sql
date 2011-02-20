@@ -1,5 +1,6 @@
 insert into User (login, imie, haslo) values ('ola', 'Ola', '12345');
 insert into User (login, imie, haslo) values ('ala', 'Ala', '12345');
+insert into User (login, imie, haslo) values ('zosia', 'Zosia', '12345');
 insert into User (login, imie, haslo) values ('admin', 'Administrator', 'admin');
 
 

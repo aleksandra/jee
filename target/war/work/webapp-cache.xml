@@ -6,10 +6,11 @@
         <pathsSet class="linked-hash-set">
           <string>admin.xhtml</string>
           <string>first.xhtml</string>
-          <string>home.xhtml</string>
           <string>index.jsp</string>
           <string>META-INF/context.xml</string>
+          <string>rej.xhtml</string>
           <string>resources/css/screen.css</string>
+          <string>resources/css/screenAdmin.css</string>
           <string>resources/gfx/banner.png</string>
           <string>resources/gfx/calendar.gif</string>
           <string>resources/gfx/weld.png</string>
@@ -21,7 +22,9 @@
           <string>WEB-INF/beans.xml</string>
           <string>WEB-INF/faces-config.xml</string>
           <string>WEB-INF/templates/default.xhtml</string>
+          <string>WEB-INF/templates/defaultAdmin.xhtml</string>
           <string>WEB-INF/web.xml</string>
+          <string>wyniki.xhtml</string>
           <string>WEB-INF/classes/foo/domain/Notatka.class</string>
           <string>WEB-INF/classes/foo/domain/User.class</string>
           <string>WEB-INF/classes/foo/service/NotatkaManager.class</string>
@@ -31,6 +34,9 @@
           <string>WEB-INF/classes/foo/web/NotatkaBean.class</string>
           <string>WEB-INF/classes/foo/web/RejBean.class</string>
           <string>WEB-INF/classes/foo/web/RejWal.class</string>
+          <string>WEB-INF/classes/foo/web/SzukanieBean.class</string>
+          <string>WEB-INF/classes/foo/web/Widok.class</string>
+          <string>WEB-INF/classes/foo/web/WidokAdmin.class</string>
           <string>WEB-INF/classes/import.sql</string>
           <string>WEB-INF/classes/message_en.properties</string>
           <string>WEB-INF/classes/message_pl.properties</string>

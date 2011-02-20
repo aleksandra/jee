@@ -35,30 +35,11 @@ public class NotatkaBean {//implements Serializable {
 	private String userLogin;
 	
 	private Date dzis = new Date();
-	private String widok = "aktualne";
-	private List<String> widokList;
-	private String[] widoki = {"aktualne","archiwum"};
 	
-	public NotatkaBean() {
-		widokList = new ArrayList<String>();
-		for(String w:widoki){
-			widokList.add(w);
-		}
-		
-	}
+	private String czyEdycja = "Notuj";
 	
-	public List<String> getWidokList() {
-		return widokList;
-	}
 	
-	public String getWidok() {
-		return widok;
-	}
-
-	public void setWidok(String widok) {
-		this.widok = widok;
-	}
-
+	
 	public Date getDzis() {
 		return dzis;
 	}
@@ -94,9 +75,17 @@ public class NotatkaBean {//implements Serializable {
 		this.id = id;
 	}
 	
+	public String getCzyEdycja() {
+		return czyEdycja;
+	}
+
+	public void setCzyEdycja(String czyEdycja) {
+		this.czyEdycja = czyEdycja;
+	}
+	
+	
+
 	//akcje
-	
-	
 	public List<Notatka> getWszystkieNotatkiPrzyszle() {
 		return notatkaManager.pobierzWszystkieNotatkiPrzyszle(logBean.getLogin());
 	}
@@ -111,16 +100,39 @@ public class NotatkaBean {//implements Serializable {
 	
 	public String wykonajDodawanie(){
 		notatkaManager.dodajNotatke(data, tresc, logBean.getLogin());
+		return "terminarz";
+	}
+	
+	public String wykonajUsuwanie(long i){	
+		notatkaManager.usunNotatke(i);
 		return null;
 	}
 	
-	public String wykonajUsuwanie(){	
-		notatkaManager.usunNotatke(id);
+	public String wlaczEdycje(long i, Date d, String t) {
+		id = i;
+		data = d;
+		tresc = t;
+		czyEdycja = "Edytuj";
+		return null;
+	}
+	
+	public String wykonajEdycje(long i) {
+		notatkaManager.edytujNotatke(i,data,tresc);
+		id = 0;
+		return null;
+	}
+	
+	public String wykonaj(long i) {
+		if(i == 0) wykonajDodawanie();
+		else wykonajEdycje(i);
 		return null;
 	}
 	
 	public String getSuma(){
 		return notatkaManager.suma(logBean.getLogin(), 3);
+	}
+	public String getSuma(String login){
+		return notatkaManager.suma(login, 3);
 	}
 	public String getSumaArch(){
 		return notatkaManager.suma(logBean.getLogin(), 1);
