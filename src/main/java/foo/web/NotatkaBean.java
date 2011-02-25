@@ -123,6 +123,7 @@ public class NotatkaBean {//implements Serializable {
 	}
 	
 	public String wykonaj(long i) {
+		System.out.println(i);
 		if(i == 0) wykonajDodawanie();
 		else wykonajEdycje(i);
 		return null;

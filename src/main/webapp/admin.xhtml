@@ -9,7 +9,10 @@
      
     	<c:if test='${logBean.login=="admin"}' >
      		<div id="prawo">
-     
+     			
+     			Witaj, <h:outputText value="#{logBean.imie}"  style="font-weight:bold;"/> 
+    			<h:form><h:commandLink action="#{logBean.wyloguj}" ><h:outputText value="Wyloguj się"/></h:commandLink></h:form><br/>
+     			
      			<div class="sidebar">
         			<h:form id="widokForm">
          				<h2>Widok:</h2>
@@ -53,18 +56,16 @@
       		
       		<div id="lewo">
       
-    			Witaj, <h:outputText value="#{logBean.imie}"  style="font-weight:bold;"/> 
-    			<h:form><h:commandLink action="#{logBean.wyloguj}" ><h:outputText value="Wyloguj się"/></h:commandLink></h:form><br/>
-				
 				<c:if test='${widokAdmin.widok.equals("notatki")}'>
-					<h2>Notatki </h2>
-      				<h:dataTable var="currentUser" value="#{adminBean.wszyscyUser}" rendered="#{!empty adminBean.wszyscyUser}" >
+					<h2>Notatki: </h2>
+      				<h:dataTable var="currentUser" value="#{adminBean.wszyscyUser}" rendered="#{!empty adminBean.wszyscyUser}" columnClasses="kolumna1" headerClass="header" >
         	        	<h:column>
             				<f:facet name="header">Użytkownik</f:facet>
              				#{currentUser.login}
          					</h:column>
          				<h:column>
-	            			<h:dataTable var="currentNotatka" value="#{currentUser.notatki}" rendered="#{!empty currentUser.notatki}" columnClasses="kolumna2, kolumna3, kolumna4">
+         					<f:facet name="header">Notatki</f:facet>
+	            			<h:dataTable var="currentNotatka" value="#{currentUser.notatki}" rendered="#{!empty currentUser.notatki}" columnClasses="kolumna2, kolumna3, kolumna4" rowClasses="tabela">
 	      						<h:column>
 	      							<f:facet name="header">Id</f:facet>
 	            					<h:outputText value="#{currentNotatka.id}" />
@@ -76,12 +77,12 @@
 	            					</h:outputText>
 	            				</h:column>
 	            				<h:column>
-	            					<f:facet name="header">Treśc</f:facet>
+	            					<f:facet name="header">Treść</f:facet>
 	            					<h:outputText value="#{currentNotatka.tresc}" />
 	            				</h:column>
 	            				<h:column>
 	         						<h:form id="usun">
-	           							<h:commandLink id="usun" action="#{notatkaBean.wykonajUsuwanie(currentNotatka.id)}" value="Usuń" />			
+	           							<h:commandLink id="usun" action="#{notatkaBean.wykonajUsuwanie(currentNotatka.id)}" value="Usuń" styleClass="usun" />			
 	      							</h:form>
 	        	 				</h:column>
 	            			</h:dataTable>
@@ -91,8 +92,8 @@
 				</c:if>
 				
 				<c:if test='${widokAdmin.widok.equals("użytkownicy")}'>    
-					<h2>Użytkownicy </h2>
-      				<h:dataTable var="user" value="#{adminBean.wszyscyUser}" rendered="#{!empty adminBean.wszyscyUser}" >
+					<h2>Użytkownicy: </h2>
+      				<h:dataTable var="user" value="#{adminBean.wszyscyUser}" rendered="#{!empty adminBean.wszyscyUser}" columnClasses="kolumna3, kolumna3, kolumna3, kolumna3" headerClass="header" rowClasses="tabela">
          				<h:column>
             				<f:facet name="header">Login</f:facet>
              					#{user.login}
@@ -107,7 +108,7 @@
 				        </h:column>
           				<h:column>
          					<h:form id="usun" >
-           						<h:commandLink id="usun" action="#{adminBean.wykonajUsuwanieU(user.login)}" value="Usuń" />			
+           						<h:commandLink id="usun" action="#{adminBean.wykonajUsuwanieU(user.login)}" value="Usuń" styleClass="usun"/>			
       						</h:form>
          				</h:column>
       				</h:dataTable>
@@ -120,5 +121,6 @@
    		<c:if test='${logBean.login!="admin"}' >
       		<br/><h:outputLink value="first.jsf">Zaloguj się</h:outputLink>, aby oglądać tą stronę <br/>
     	</c:if>
+    	
 	</ui:define>
 </ui:composition>

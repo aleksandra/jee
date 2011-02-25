@@ -11,9 +11,14 @@
           <string>rej.xhtml</string>
           <string>resources/css/screen.css</string>
           <string>resources/css/screenAdmin.css</string>
+          <string>resources/css/screenUser.css</string>
           <string>resources/gfx/banner.png</string>
+          <string>resources/gfx/banner1.png</string>
+          <string>resources/gfx/banner2.png</string>
           <string>resources/gfx/calendar.gif</string>
-          <string>resources/gfx/weld.png</string>
+          <string>resources/gfx/pinezka2.png</string>
+          <string>resources/gfx/pinezka3.png</string>
+          <string>resources/gfx/wykrzyknik.gif</string>
           <string>resources/gfx/wykrzyknik.jpg</string>
           <string>resources/scripts/jquery.ui.core.js</string>
           <string>resources/scripts/jquery.ui.datepicker.js</string>
@@ -23,6 +28,7 @@
           <string>WEB-INF/faces-config.xml</string>
           <string>WEB-INF/templates/default.xhtml</string>
           <string>WEB-INF/templates/defaultAdmin.xhtml</string>
+          <string>WEB-INF/templates/defaultUser.xhtml</string>
           <string>WEB-INF/web.xml</string>
           <string>wyniki.xhtml</string>
           <string>WEB-INF/classes/foo/domain/Notatka.class</string>

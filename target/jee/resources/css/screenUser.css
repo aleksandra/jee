@@ -1,0 +1,31 @@
+
+.sidebar {
+   font-size: 0.9em;
+   width: 260px;
+   border: 1px solid #666666;
+   background: #9d9d9d url(#{request.contextPath}/resources/gfx/pinezka2.png) right top no-repeat;
+   color: #ffffff;
+   padding: 0 15px 5px 15px;
+   margin:5px;
+}
+
+
+.notatka {
+	background: #FFF68F url(#{request.contextPath}/resources/gfx/pinezka3.png) right top no-repeat;
+	color: inherit;
+}
+
+.notatka input {
+	background: #FFF68F;
+	border: 1px solid #9d9d9d;
+}
+
+.notatka textarea {
+	background: #FFF68F;
+	border: 1px solid #9d9d9d;
+}
+
+.tabela:nth-of-type(odd){
+	background: #FFFFFF;
+}
+
